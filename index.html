@@ -13,33 +13,42 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid bg-dark text-white">
-        <div class="container bg-dark text-white">
+    <div class="bg-dark text-white">
+        <header class="container bg-dark text-white">
+            <br>
             <h1 class="display-4">Weather Dashboard</h1>
-        </div>
+            <br>
+        </header>
     </div>
     <div class="row">
-        <div class="left card col-lg-4 col-md-4 col-sm-4">
+        <div class="left card col-lg-3 col-md-3 col-sm-3 col-3">
             <div class="card-body">
-
                 <form id="search">
                     <input type="text" id="weather-search" placeholder="Enter City Name">
                     <input id="add-city" type="submit" value="Search">
                     <br>
+                    <br>
                 </form>
-                <ul id="past-searches">
-                </ul>
+                <div class="row">
+                    <div id="past-searches" class="btn-group-vertical">
+
+                    </div>
+                
+                </div>
             </div>
         </div>
-        <div class="main col-lg-8 col-md-6 col-sm-6">
+        <div class="main col-lg-9 col-md-9 col-sm-9 col-9">
             <div class="card row">
                 <div class="card-body today">
 
                 </div>
 
             </div>
-            <div class="row Forecast">
-                <h2>5-Day Forecast: </h2>
+            <div>
+                <h2 class="row"> 5-Day Forecast: </h2>
+                <div class="row forecast">
+
+                </div>
 
             </div>
         </div>
@@ -56,6 +65,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="Assets/script.js"></script>
 </body>
 

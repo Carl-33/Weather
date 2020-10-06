@@ -30,8 +30,11 @@ function displayWeather() {
         console.log(response)
 
         var cityDisplay = $("<h1>")
-        cityDisplay.text(response.name);
+        cityDisplay.text(response.name + " " + moment().format('l')); 
         $(".today").append(cityDisplay);
+        var icon = $("<img>")
+        icon.attr("src", "http://openweathermap.org/img/wn/"+ response.weather[0].icon +"@2x.png")
+        cityDisplay.append(icon);    
         var temperatureDisplay = $("<p>")
         var temperature = (response.main.temp - 273.15) * 1.8 + 32;
         temperatureDisplay.text("Temperature: " + temperature.toFixed(1) + "° F");
@@ -60,12 +63,43 @@ function displayWeather() {
             uvDisplay.text("UV Index: " + UV);
             $(".today").append(uvDisplay);
         })
-        var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + queryCity + "&appid=" + APIKey;
+        var fiveDayURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude +"&lon=" + longitude + "&exclude=minutely,hourly,alerts&appid=" + APIKey; 
         $.ajax({
             url: fiveDayURL,
             method: "GET"
         }).then(function (response) {
             console.log(response)
+            $(".forecast").empty();
+            for (let i = 1; i < 6; i++) {
+                console.log(response.daily[i]);
+                var forecastBox = $("<div>");
+                forecastBox.addClass("card col-lg-2.5 col-md-2.5 col-sm-2.5 col-2.5");
+                var forecastCard = $("<div>");
+                forecastCard.addClass("card-body text-white bg-primary");
+                forecastBox.append(forecastCard);
+
+                var forecastDate = $("<h4>")
+                forecastDate.text(moment().add(i, 'days').format('l'));
+                forecastCard.append(forecastDate);
+
+                var forecastIcon = $("<img>")
+                forecastIcon.attr("src", "http://openweathermap.org/img/wn/"+ response.daily[i].weather[0].icon +"@2x.png")
+                forecastCard.append(forecastIcon);
+
+                var forecastTemperatureDisplay = $("<p>");
+                var forecastTemperature = (response.daily[i].temp.day - 273.15) * 1.8 + 32;
+                forecastTemperatureDisplay.text("Temp: " + forecastTemperature.toFixed(1) + "° F");
+                forecastCard.append(forecastTemperatureDisplay);
+                var forecastHumidityDisplay = $("<p>");
+                var forecastHumidity = response.daily[i].humidity
+                forecastHumidityDisplay.text("Humidity: " + forecastHumidity.toFixed(1) + "%");
+                forecastCard.append(forecastHumidityDisplay);
+                
+                
+                $(".forecast").append(forecastBox)
+
+                
+            }
 
         });
 
@@ -88,9 +122,18 @@ $("#add-city").on("click", function (event) {
     console.log(city)
     console.log(searches)
     displayWeather();
-    var cityList = $("<li>")
+    var cityList = $("<button>")
     cityList.text(city)
-    $("ul").prepend(cityList)
+    cityList.attr("city-name", city)
+    cityList.addClass("past-search-button btn btn-light btn-lg btn-block")
+    $("#past-searches").prepend(cityList)
 
+})
+
+$(document).on("click", ".past-search-button", function(){
+
+    var city = $(this).attr("city-name")
+    searches.push(city)
+    displayWeather();
 })
 
