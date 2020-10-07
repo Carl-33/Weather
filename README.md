@@ -10,15 +10,15 @@ https://carl-33.github.io/Weather/
 
 Enter a city in the search bar to see the weather.
 
-![Image of Search Bar](Capture1.JPG)
+![Image of Search Bar](Assets/Capture1.JPG)
 
 The current weather in the city is provided, as well as a 5-day forecast
 
-![Image of Weather](Capture2.JPG)
+![Image of Weather](Assets/Capture2.JPG)
 
 Click on past searches to see results again
 
-![Image of Past Searches](Capture3.JPG)
+![Image of Past Searches](Assets/Capture3.JPG)
 
 
 # Installation Instructions
