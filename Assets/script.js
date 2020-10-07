@@ -36,7 +36,7 @@ $(document).ready(function () {
 
             var latitude = response.coord.lat
             var longitude = response.coord.lat
-            var uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
+            var uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
 
             $.ajax({
                 url: uvURL,
@@ -157,7 +157,7 @@ $(document).ready(function () {
             $(".today").append(windDisplay);
             var latitude = response.coord.lat
             var longitude = response.coord.lat
-            var uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
+            var uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
             $.ajax({
                 url: uvURL,
                 method: "GET"
