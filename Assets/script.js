@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
 
-    var APIKey = "6bf41dfabf2736b1e0d2f81ada2c6044";
+    const APIKey = config.API_KEY
     var searches = [];
     // displays the weather
     function displayWeather() {
